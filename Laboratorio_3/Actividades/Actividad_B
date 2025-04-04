@@ -1,0 +1,14 @@
+FUNCION max(x : ENTERO, y : ENTERO) : ENTERO
+    result : ENTERO                    // O(1): Declaración y espacio constante
+
+    SI (x >= y) ENTONCES              // O(1): Comparación simple
+        result := x                   // O(1): Asignación
+    SINO
+        result := y                   // O(1): Asignación
+    FINSI
+
+    DEVOLVER result                   // O(1): Retornar el resultado
+FINFUNCION
+
+// COMPLEJIDAD TOTAL: Todas las instrucciones son constantes.
+// No hay bucles ni llamadas recursivas.
