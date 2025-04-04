@@ -1,0 +1,17 @@
+PROCEDIMIENTO ordenar(REF v : VECTOR(ENTERO), tamaño : ENTERO)
+    i, j, aux : ENTERO                           // O(1): Declaración
+
+    PARA i DESDE 0 HASTA tamaño-1 HACER          // O(n): Bucle externo
+        PARA j DESDE 0 HASTA tamaño-1 HACER      // O(n): Bucle interno
+
+            SI (v[j] > v[j+1]) ENTONCES          // O(1): Comparación
+                aux := v[j];                     // O(1): Asignación
+                v[j] := v[j+1];                  // O(1): Asignación
+                v[j+1] := aux;                   // O(1): Asignación
+            FINSI
+
+        FINPARA
+    FINPARA
+FINPROCEDIMIENTO
+
+// COMPLEJIDAD TOTAL: O(n²) — Dos bucles anidados, cada uno hasta n
