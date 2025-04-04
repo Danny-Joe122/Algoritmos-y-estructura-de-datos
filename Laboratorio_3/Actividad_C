@@ -1,0 +1,12 @@
+FUNCION suma (v : VECTOR(ENTERO), tamaño : ENTERO) : ENTERO
+    i, result : ENTERO                // O(1): Declaración
+    result := 0                       // O(1): Asignación inicial
+
+    PARA i DESDE 0 HASTA tamaño-1 HACER   // O(n): Bucle lineal, depende del tamaño del vector
+        result := result + v[i]           // O(1): Suma y asignación por cada iteración
+    FINPARA
+
+    DEVOLVER result                   // O(1): Devolución del valor
+FINFUNCION
+
+// COMPLEJIDAD TOTAL: O(n) — El bucle se ejecuta n veces y cada operación interna es O(1)
