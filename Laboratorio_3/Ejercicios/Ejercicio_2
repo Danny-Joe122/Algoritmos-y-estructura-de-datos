@@ -1,0 +1,13 @@
+FUNCIÓN ConteoI (v : VECTOR(ENTERO), n : ENTERO) : ENTERO
+conteo := 0                            // O(1): Asignación inicial
+PARA i DESDE 0 HASTA n-2 HACER        // O(n): Bucle externo
+    PARA j DESDE i+1 HASTA n-1 HACER   // O(n): Bucle interno anidado
+        SI v[i] = v[j] ENTONCES       // O(1): Comparación
+            conteo := conteo + 1      // O(1): Asignación
+        FINSI
+    FINPARA
+FINPARA
+DEVOLVER conteo                        // O(1): Retorno del resultado
+FINFUNCIÓN
+
+//COMPLEJIDAD TOTAL: O(n²) debido a bucles anidados
