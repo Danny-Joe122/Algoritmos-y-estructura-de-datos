@@ -1,0 +1,17 @@
+// Paso 1: Expansión
+// Primera llamada:  T(n) = 2T(n/2) + n
+// Segunda llamada:  T(n) = 4T(n/4) + 3n
+// Tercera llamada:  T(n) = 8T(n/8) + 7n
+// Patrón general:   T(n) = 2^k T(n/2^k) + k*n
+
+// Paso 2: Detener expansión cuando n/2^k = 1
+// ⇒ k = log₂(n)
+
+// Reemplazamos en la fórmula general:
+// T(n) = n * T(1) + n log n
+// Como T(1) = O(1), tenemos:
+// T(n) = O(n) + O(n log n) = O(n log n)
+
+// CONCLUSIÓN:
+// Esta es la complejidad del algoritmo Merge Sort o cualquier algoritmo
+// que divide el problema en dos partes iguales y combina en tiempo lineal.
