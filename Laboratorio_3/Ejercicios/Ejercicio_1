@@ -1,0 +1,10 @@
+FUNCIÓN BM (v : VECTOR(ENTERO), n : ENTERO) : ENTERO m := v[0]                      // O(1): Asignación simple
+PARA i DESDE 1 HASTA n-1 HACER   // O(n): Recorre el vector una vez
+       SI v[i] > m ENTONCES         // O(1): Comparación constante
+             m := v[i]                // O(1): Asignación
+  FINSI
+FINPARA
+DEVOLVER m                    // O(1): Devolución del valor
+FINFUNCIÓN
+
+//COMPLEJIDAD TOTAL: O(1 + n*1) = O(n
