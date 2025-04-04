@@ -1,0 +1,17 @@
+public static int moda(int[] v) {     // O(1): Inicialización de variables y estructura HashMap
+    Map<Integer, Integer> frecuencia = new HashMap<>();
+    int maxFrecuencia = 0;
+    int moda = v[0];         // O(n): Recorremos todos los elementos del arreglo una sola vez
+    for (int num : v) {      // O(1): Obtener valor actual del mapa o 0 si no existe
+        int f = frecuencia.getOrDefault(num, 0) + 1;   // O(1): Actualizar el mapa con la nueva frecuencia
+        frecuencia.put(num, f);       // O(1): Comparar y actualizar si se encuentra una mayor frecuencia
+        if (f > maxFrecuencia) {
+            maxFrecuencia = f;
+            moda = num;
+        }
+    }
+
+    return moda;     // O(1): Devolución del valor más frecuente
+}
+
+// COMPLEJIDAD TOTAL: O(n) en promedio, debido a que cada operación sobre el HashMap es O(1)
