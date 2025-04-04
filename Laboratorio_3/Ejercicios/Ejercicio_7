@@ -1,0 +1,72 @@
+public class MergeSortOptimizado {
+    // Umbral a partir del cual se decide usar Insertion Sort para subarreglos pequeños
+    private static final int UMBRAL = 10;
+
+    // Método principal de ordenación
+    public static void mergeSort(int[] arr, int left, int right) {
+        // Caso base: si el subarreglo es pequeño, usar Insertion Sort (más eficiente para pocos elementos)
+        if (right - left <= UMBRAL) {
+            insertionSort(arr, left, right);  // O(n^2) pero sobre pocos elementos
+        } else {
+            // División del arreglo (Divide)
+            int mid = (left + right) / 2;
+            mergeSort(arr, left, mid);        // Llamada recursiva a la mitad izquierda
+            mergeSort(arr, mid + 1, right);   // Llamada recursiva a la mitad derecha
+            merge(arr, left, mid, right);     // Combinación de ambas mitades (Conquer)
+        }
+    }
+
+    // Implementación de Insertion Sort
+    private static void insertionSort(int[] arr, int left, int right) {
+        for (int i = left + 1; i <= right; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            // Desplazamiento de elementos mayores a la derecha
+            while (j >= left && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            // Inserción del elemento en su posición correcta
+            arr[j + 1] = key;
+        }
+        // Este algoritmo es O(n^2), pero se aplica solo a subarreglos pequeños (UMBRAL)
+    }
+
+    // Método merge para combinar dos subarreglos ordenados
+    private static void merge(int[] arr, int left, int mid, int right) {
+        // Tamaños de los subarreglos izquierdo y derecho
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        // Arreglos temporales para almacenar las mitades
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // Copiar los datos en arreglos temporales
+        for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+        for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+
+        // Variables para recorrer los subarreglos y el arreglo principal
+        int i = 0, j = 0, k = left;
+
+        // Combinar los subarreglos en orden
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k++] = L[i++];
+            } else {
+                arr[k++] = R[j++];
+            }
+        }
+
+        // Copiar los elementos restantes de L[] (si hay)
+        while (i < n1) {
+            arr[k++] = L[i++];
+        }
+
+        // Copiar los elementos restantes de R[] (si hay)
+        while (j < n2) {
+            arr[k++] = R[j++];
+        }
+        // Este método tiene complejidad O(n), ya que cada elemento se copia una sola vez
+    }
+}
