@@ -1,0 +1,12 @@
+FUNCIÓN potenciaRapida(x : ENTERO, y : ENTERO) : ENTERO
+    SI y = 0 ENTONCES                         // O(1): Condición base
+        DEVOLVER 1                            // O(1): Caso base
+
+    SINO SI y % 2 = 0 ENTONCES                // O(1): Verifica si y es par
+        mitad := potenciaRapida(x, y / 2)     // T(y/2): Llamada recursiva
+        DEVOLVER mitad * mitad               // O(1): Multiplicación
+
+    SINO
+        DEVOLVER x * potenciaRapida(x, y - 1) // T(y - 1): Llamada recursiva
+    FINSI
+FINFUNCIÓN
